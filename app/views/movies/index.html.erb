@@ -1,10 +1,12 @@
 <h1 class="title">Rotten Mangoes</h1>
-<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <%= link_to "Submit a movie!", new_movie_path %>
     <hr>
     <% @movies.each do |movie| %>
-      <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
-      <%= image_tag movie.poster %>
+      <div>
+        <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+        <%= image_tag movie.poster %>
+      </div>
+      
       <h2><%= link_to movie.title, movie_path(movie) %></h2>
       <h3><%= formatted_date(movie.release_date) %></h3>
       <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>

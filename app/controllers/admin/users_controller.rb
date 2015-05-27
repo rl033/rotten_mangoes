@@ -1,27 +1,45 @@
 class Admin::UsersController < ApplicationController
 
   before_filter :restrict_access_admin
-  
+
   def index
     @users = User.all
-    # puts "ITs WORKING"
   end
 
-  # def new
-  #   @user = User.new
-  # end
+  def new
+    @user = User.new
+  end
 
-  # def create
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id unless @user.admin
+      redirect_to admin_users_path, notice: "User #{@user.full_name} successfully created!"
+    else
+      render :new
+    end
+  end
 
-  #   @user = User.new(user_params)
+  def edit
+    @user = User.find(params[:id])
+  end
 
-  #   if @user.save
-  #     session[:user_id] = @user.id, 
-  #     redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
-  #   else
-  #     render :new
-  #   end
-  # end
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(user_params)
+      redirect_to admin_users_path(@user)
+    else
+      render :edit
+    end
+  end
+
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path
+  end
 
   protected
 
