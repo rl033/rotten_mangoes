@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
     "#{firstname} #{lastname}"
   end
   
+  # def self.set_admin(email)
+  #   self.find_by(:email, email).update(:admin, )
+  # end
 end
