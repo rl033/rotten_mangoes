@@ -28,9 +28,9 @@ class Movie < ActiveRecord::Base
 
   protected
 
-  # def release_date_is_in_the_future
-  #   if release_date.present?
-  #     errors.add(:release_date, "should probably be in the future") if release_date < Date.today
-  #   end
-  # end
+  def release_date_is_in_the_future
+    if release_date.present?
+      errors.add(:release_date, "should probably be in the future") if release_date < Date.today
+    end
+  end
 end
