@@ -33,4 +33,9 @@ class Movie < ActiveRecord::Base
       errors.add(:release_date, "should probably be in the future") if release_date < Date.today
     end
   end
+
+  def self.search(query, duration)
+    where("title like ? OR director like ?", "%#{query}%", "%#{query}%").where(duration)
+  end
+
 end

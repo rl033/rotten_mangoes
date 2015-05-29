@@ -2,13 +2,12 @@
 <%= link_to "Submit a movie!", new_movie_path %>
 <hr>
   <%= form_tag(movies_search_path, :method => 'get', id: "search-form") do %>
-    <%= text_field_tag :title, params[:title], placeholder: "title" %>
-    <%= text_field_tag :director, params[:director], placeholder: "director"%>
+    <%= text_field_tag :keyword, params[:keyword], placeholder: "title or director" %>
     <select name="duration"> 
-      <option></option>
-      <option>Under 90 minutes</option>
-      <option>Between 90 and 120 minutes</option>
-      <option>Over 120 minutes</option>
+      <option value = ''></option>
+      <option value = 'runtime_in_minutes < 90'>Under 90 minutes</option>
+      <option value = 'runtime_in_minutes >= 90 AND runtime_in_minutes <= 120'>Between 90 and 120 minutes</option>
+      <option value = 'runtime_in_minutes > 120'>Over 120 minutes</option>
     </select>
     <%= submit_tag "Search", :name => nil %>
   <% end %>
