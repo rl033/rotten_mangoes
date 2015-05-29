@@ -30,6 +30,12 @@ gem 'jbuilder', '~> 1.2'
 # Upload files
 gem 'carrierwave'
 
+# Send email
+gem 'mail'
+
+# Simple, Heroku-friendly Rails app configuration
+gem 'figaro'
+
 gem 'tux'
 gem 'pry'
 

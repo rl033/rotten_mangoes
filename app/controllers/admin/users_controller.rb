@@ -13,6 +13,7 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.welcome_email(@user).deliver
       redirect_to admin_users_path, notice: "User #{@user.full_name} successfully created!"
     else
       render :new
@@ -27,15 +28,15 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      redirect_to admin_users_path(@user)
+      redirect_to admin_users_path
     else
       render :edit
     end
   end
 
-
   def destroy
     @user = User.find(params[:id])
+    UserMailer.user_delete_notification(@user).deliver
     @user.destroy
     redirect_to admin_users_path
   end
