@@ -22,6 +22,8 @@ class Movie < ActiveRecord::Base
 
   # validate :release_date_is_in_the_future
 
+  scope :search, ->(keyword, duration) { where("title like ? OR director like ?", "%#{keyword}%", "%#{keyword}%").where(duration) }
+
   def review_average
     reviews.empty? ? 0 : reviews.sum(:rating_out_of_ten)/reviews.size
   end
@@ -34,8 +36,8 @@ class Movie < ActiveRecord::Base
     end
   end
 
-  def self.search(query, duration)
-    where("title like ? OR director like ?", "%#{query}%", "%#{query}%").where(duration)
-  end
+  # def self.search(keyword, duration)
+  #   where("title like ? OR director like ?", "%#{keyword}%", "%#{keyword}%").where(duration)
+  # end
 
 end
