@@ -1,0 +1,39 @@
+<div class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <%=link_to('Rotten Mangoes', root_path, class: "navbar-brand web-title")%>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <div class="submit-movie">
+           <%=link_to('+ Movie', new_movie_path, class: 'btn btn-default navbar-btn')%>
+          </div>
+          <div class="user-button-signed-in">
+            <div type="button" class="btn dropdown-toggle user-dropdown" data-toggle="dropdown" role="button">
+              <% if current_user.avatar %>
+               <%= image_tag current_user.avatar, class: "user-avatar"%>
+              <% end %>
+              <%= current_user.full_name %>
+              <span class="caret"></span>
+           </div> 
+            <ul class="dropdown-menu user-menu" role="menu">
+              <li><a href="#">Profile</a></li>
+              <% if current_user.admin == true %>
+                <li><%= link_to "Control Panel", admin_users_path%></li>
+              <% end %>
+              <li><%= link_to "Log out", session_path("current"), method: :delete %></li>
+            </ul>
+          </div>
+        <% else %>
+          <div class="user-button">
+            <%=link_to('Sign In', new_session_path, class: 'btn btn-default navbar-btn')%>
+            <%=link_to('Sign Up', new_user_path, class: 'btn btn-primary navbar-btn')%>
+          </div>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</div><!-- /.navbar -->

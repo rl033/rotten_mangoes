@@ -1,7 +1,7 @@
-<h1>Sign Up</h1>
+<div class="user-title row"><h1 class="col-sm-6 col-sm-offset-4">Sign Up</h1></div>
   <%= form_for @user do |f| %>
     <% if @user.errors.any? %>
-      <div>
+      <div class="alert alert-danger error-msg">
         <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
         <ul>
           <% @user.errors.full_messages.each do |msg| %>
@@ -10,25 +10,23 @@
         </ul>
       </div>
     <% end %>
-    <div>
-      <%= f.label "email" %><br>
-      <%= f.text_field "email" %>
+    <!-- <div class="col-sm-5"> -->
+    <div class="signup-form row">
+      <%= f.text_field "email", placeholder: "Email", class: "col-sm-5 col-sm-offset-4"%>
     </div>
-    <div>
-      <%= f.label "firstname", "First Name" %><br>
-      <%= f.text_field "firstname" %>
+     <div class="signup-form row">
+      <%= f.text_field "firstname", placeholder: "First Name", class: "col-sm-2 col-sm-offset-4" %>
+      <%= f.text_field "lastname", placeholder: "Last Name", class: "col-sm-2 col-sm-offset-1" %>
     </div>
-    <div>
-      <%= f.label "lastname", "Last Name" %><br>
-      <%= f.text_field "lastname" %>
+    <div class="signup-form row">
+      <%= f.password_field "password", placeholder: "Password", class: "col-sm-5 col-sm-offset-4" %>
     </div>
-    <div>
-      <%= f.label "password" %><br>
-      <%= f.password_field "password" %>
+    <div class="signup-form row">
+      <%= f.password_field "password_confirmation", placeholder: "Password Confirmation", class: "col-sm-5 col-sm-offset-4" %>
     </div>
-    <div>
-      <%= f.label "password_confirmation" %><br>
-      <%= f.password_field "password_confirmation" %>
+    <div class="signup-form row">
+      <%= f.file_field :avatar, class: "col-sm-5 col-sm-offset-4"%>
     </div>
-    <div><%= f.submit "Submit" %></div>
+    <div class="signup-form row"><%= f.submit "Register", class: "btn btn-default btn-primary col-sm-2 col-sm-offset-4"%></div>
+    </div>
   <% end %>

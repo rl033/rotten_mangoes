@@ -1,17 +1,24 @@
-<h1 class="title">Rotten Mangoes</h1>
-<%= link_to "Submit a movie!", new_movie_path %>
-<hr>
-  <%= form_tag(movies_search_path, :method => 'get', id: "search-form") do %>
-    <%= text_field_tag :keyword, params[:keyword], placeholder: "title or director" %>
-    <select name="duration"> 
-      <option value = ''></option>
-      <option value = 'runtime_in_minutes < 90'>Under 90 minutes</option>
-      <option value = 'runtime_in_minutes >= 90 AND runtime_in_minutes <= 120'>Between 90 and 120 minutes</option>
-      <option value = 'runtime_in_minutes > 120'>Over 120 minutes</option>
-    </select>
-    <%= submit_tag "Search", :name => nil %>
+   <%= form_tag(movies_search_path, :method => 'get', id: "search-form") do %>
+   <div class="row"><div class="input-group search-bar">
+    
+      <div class="col-sm-3 col-sm-offset-3"><%= text_field_tag :keyword, params[:keyword], placeholder: "title or director", class: "form-control" %></div>
+    <div class="col-sm-3"><select class="bfh-selectbox form-control" name="duration"> 
+        <option value = ''>Any runtime</option>
+        <option value = 'runtime_in_minutes < 90'>Under 90 minutes</option>
+        <option value = 'runtime_in_minutes >= 90 AND runtime_in_minutes <= 120'>Between 90 and 120 minutes</option>
+        <option value = 'runtime_in_minutes > 120'>Over 120 minutes</option>
+      </select></div>
+    <div class="col-sm-3">
+    <span class="input-group-btn">
+     <%= submit_tag "Search", class: "btn btn-success", :name => nil %>
+    </span></div>
+    </div>
+  </div>
   <% end %>
-<hr>
-<% @movies.each do |movie| %>
-  <%= render movie %>
-<% end %>
+  
+
+  <% @movies.each do |movie| %>
+  <div class="row">
+    <%= render movie %>
+    </div>
+  <% end %>

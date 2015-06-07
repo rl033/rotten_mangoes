@@ -30,6 +30,9 @@
       <%= f.password_field "password_confirmation" %>
     </div>
     <div>
+      <%= f.file_field :avatar %>
+    </div>
+    <div>
       <%= f.check_box "admin" %>
       <%= f.label "admin" %><br>
     <div><%= f.submit "Submit" %></div>

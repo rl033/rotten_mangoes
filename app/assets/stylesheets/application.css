@@ -11,3 +11,90 @@
  *= require_self
  *= require_tree .
  */
+ /*
+ *= require rails_bootstrap_forms
+ */
+body {
+  background-image: url('/assets/light_grey_background.jpg');
+}
+
+.container {
+  margin-top: 5%;
+}
+
+/*nav bar*/
+.navbar-custom {
+  background-color: #E69400;
+  color: white;
+  position: relative;
+}
+
+.web-title {
+  color: white;
+  margin-left: 10%;
+}
+
+.user-button {
+  margin-left: -13%;
+}
+
+.search-bar {
+  margin-top: 3%;
+  margin-right: -16%;
+}
+
+.user-avatar {
+  height: 40px;
+  width: 40px;
+}
+
+.user-drop-down {
+  margin-top: 1.5%;
+}
+
+.submit-movie {
+  position: absolute;
+  margin-left: -10%;
+  margin-top: 0.2%
+}
+
+/*movie*/
+#movie-poster {
+  margin-top: 5%;
+}
+
+.movie-img {
+  box-shadow: 10px 10px 15px grey;
+}
+
+#movie-text {
+  margin-top: 3%;
+}
+.movie-title, .movie-date, .movie-director {
+  text-align: center;
+}
+.movie-description {
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-indent: 5%;
+}
+.movie-rating {
+  margin-top: 12%;
+  margin-left: 5%
+}
+
+/* users */
+.user-title {
+  margin-top: 2%;
+  margin-bottom: 3.5%;
+}
+.error-msg {
+  text-align: center;
+}
+.signup-form {
+  font-family: arial;
+  font-weight: bold;
+  padding-bottom: 2.5%;
+  text-align: center;
+}
